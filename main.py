@@ -8,12 +8,12 @@ URL = 'https://www.wollplatz.de/wolle/?page='
 all_product_csv = 'wollplatz.csv'
  
 #gesuchte Namen
-query = ['DMC Natura XL',
-        'Drops Safran',
-        'Drops Baby Merino Mix',
-        'Hahn Alpacca Speciale',
-        'Stylecraft Sepcial double knit'
-]
+#query = ['DMC Natura XL',
+#        'Drops Safran',
+#        'Drops Baby Merino Mix',
+#        'Hahn Alpacca Speciale',
+#        'Stylecraft Sepcial double knit'
+#]
 
 #returns a list of the 
 def get_product_info(link_list):
@@ -83,6 +83,14 @@ def search_csv(filename, query):
                     ls.append(row[1])
     return ls
 
+def get_query_from_txt(file):
+    ls = []
+    f = open(file,'r')
+    for line in f:
+        ls.append(line.strip())
+    f.close()
+    return ls
+
 
 
 
@@ -91,6 +99,7 @@ if not (os.path.exists(all_product_csv)):
     page_count = get_page_count(URL)
     dict_to_csv(get_links(URL,page_count),all_product_csv)
 
-
+query = get_query_from_txt("query.txt")
+print(query)
 links = search_csv(all_product_csv,query)
 dict_to_csv(get_product_info(links), 'products.csv')
