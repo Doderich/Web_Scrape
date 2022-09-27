@@ -7,14 +7,6 @@ import os.path # chekc if files exists
 URL = 'https://www.wollplatz.de/wolle/?page='
 all_product_csv = 'wollplatz.csv'
  
-#gesuchte Namen
-#query = ['DMC Natura XL',
-#        'Drops Safran',
-#        'Drops Baby Merino Mix',
-#        'Hahn Alpacca Speciale',
-#        'Stylecraft Sepcial double knit'
-#]
-
 #returns a list of the 
 def get_product_info(link_list):
     all_prod = []    
